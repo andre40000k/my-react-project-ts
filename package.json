@@ -3,7 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://andre40000k.github.io/my-react-project-ts/",
+  "homepage": "https://andre40000k.github.io/my-react-project-ts/tree/React-Context",
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",
