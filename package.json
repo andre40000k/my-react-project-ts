@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "type": "module",
   "homepage": "https://andre40000k.github.io/my-react-project-ts/",
-
   "scripts": {
     "dev": "vite",
     "build": "vite build",
