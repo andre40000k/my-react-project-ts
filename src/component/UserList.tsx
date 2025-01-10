@@ -1,10 +1,8 @@
-// import { useContext } from "react"; // лекционній вариант
-// import { UserContext} from "../context/UserContext"; // лекционній вариант
-import {useUserContext } from "../context/UserContext";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 function UserList() {
-  //   const { users } = useContext(UserContext); // лекционній вариант
-  const { users } = useUserContext();
+  const users = useSelector((state: RootState) => state.user.users);
 
   return (
     <ul>
@@ -13,6 +11,6 @@ function UserList() {
       ))}
     </ul>
   );
-};
+}
 
 export default UserList;

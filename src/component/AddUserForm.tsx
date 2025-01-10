@@ -1,18 +1,19 @@
-// import React, { useContext} from "react"; // лекционній вариант
-// import { UserContext } from "../context/UserContext"; // лекционній вариант
-
-import React, { useState } from "react";
-import { useUserContext } from "../context/UserContext";
+import { useDispatch } from "react-redux";
+import { addUser } from "../slices/userSlice";
+import User from "../interface/IUser";
+import { useState } from "react";
 
 function AddUserForm() {
-  const { addUser } = useUserContext();
-  //   const { addUser } = useContext(UserContext); // лекционній вариант
   const [name, setName] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    addUser({ id: Date.now(), name });
-    setName("");
+    if (name.trim()) {
+      const newUser: User = { id: Date.now(), name };
+      dispatch(addUser(newUser));
+      setName("");
+    }
   };
 
   return (
