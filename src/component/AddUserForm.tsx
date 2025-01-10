@@ -22,7 +22,7 @@ function AddUserForm() {
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        placeholder="Enter user name"
+        placeholder="Enter user name: "
       />
       <button type="submit">Add User</button>
     </form>
