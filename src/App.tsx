@@ -6,7 +6,7 @@ import './App.css'
 const App = () => {
   return (
     <div>
-      <h1>User Management Redux</h1>
+      <h1>User Management Redux Async</h1>
       <AddUserForm />
       <UserList />
     </div>

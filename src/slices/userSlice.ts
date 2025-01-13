@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import User from "../interface/IUser";
 
 interface UserState {
@@ -9,15 +9,32 @@ const initialState: UserState = {
   users: [],
 };
 
-const userSlice = createSlice({
-  name: "user",
-  initialState,
-  reducers: {
-    addUser: (state, action: PayloadAction<User>) => {
-      state.users.push(action.payload);
-    },
-  },
+export const addUserAsync = createAsyncThunk<User, User>
+("user/addUserAsync", 
+  async (user) => {
+  return new Promise<User>((resolve) => {
+    setTimeout(() => {
+      resolve(user);
+    }, 1000);
+  });
 });
 
-export const { addUser } = userSlice.actions;
-export default userSlice.reducer;
+
+const userSliceReducer = createSlice({
+  name: "user",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(addUserAsync.fulfilled, (state, action) => {
+        state.users.push(action.payload);
+      });
+  },
+  // reducers: {
+  //   addUser: (state, action: PayloadAction<User>) => {
+  //     state.users.push(action.payload);
+  //   },
+  // },
+});
+
+export default userSliceReducer.reducer;

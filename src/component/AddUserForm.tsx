@@ -1,17 +1,18 @@
 import { useDispatch } from "react-redux";
-import { addUser } from "../slices/userSlice";
+import { addUserAsync } from "../slices/userSlice";
 import User from "../interface/IUser";
 import { useState } from "react";
+import { AppDispatch } from "../store";
 
 function AddUserForm() {
   const [name, setName] = useState("");
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (name.trim()) {
       const newUser: User = { id: Date.now(), name };
-      dispatch(addUser(newUser));
+      dispatch(addUserAsync(newUser));
       setName("");
     }
   };
